@@ -14,4 +14,6 @@
       <app-user (select)="onSelectUser($event)" [id]="users[3].id" [avatar]="users[3].avatar" [name]="users[3].name" />
     </li>
   </ul>
+
+  <app-tasks [name]="selectedUserName"></app-tasks>
 </main>
