@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 
 const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
@@ -16,10 +16,14 @@ export class UserComponent {
   // but that is not a guarantee
   @Input({ required: true }) avatar!: string; // using the required will show an error on our IDE compared to not showing anything at all with the bang operator
   @Input({ required: true }) name!: string;
+  @Input({ required: true }) id!: string;
+  @Output() select = new EventEmitter();
 
   get imagePath() {
     return 'assets/users/' + this.avatar;
   }
 
-  onSelectUser() {}
+  onSelectUser() {
+    this.select.emit(this.id);
+  }
 }
